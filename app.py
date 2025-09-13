@@ -1,29 +1,29 @@
 ################################
-# Bibliotecas
+# Libraries
 ################################
 import flask
 
 ################################
-# Carregamento de Modelo
+# Model Loading
 ################################
 
 
 ################################
-# Configurações
+# Settings
 ################################
 app = flask.Flask(__name__, template_folder="templates", static_folder="static")
 
 
 ################################
-# Rotas
+# Routes
 ################################
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 def index():
     return flask.render_template("index.html")
 
 
 ################################
-# Execução
+# Execution
 ################################
 if __name__ == "__main__":
     app.run(debug=True)
