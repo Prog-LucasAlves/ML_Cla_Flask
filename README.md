@@ -6,8 +6,15 @@ Este projeto implementa um modelo de machine learning para prever diabetes em pa
 
 O sistema utiliza um modelo de classificação treinado no dataset Pima Indians Diabetes para prever se um paciente tem diabetes baseado em características como:
 
-* Sexo
-
+* Gender
+* Age
+* Hypertension
+* Heart disease
+* Smoking history
+* BMI
+* HbA1c level
+* Blood glucose level
+* Diabetes
 
 ## Como Executar
 
