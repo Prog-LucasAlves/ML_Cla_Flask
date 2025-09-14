@@ -1,19 +1,19 @@
-# Projeto de Classificação com Flask
+# Projeto de Classificação - Previsão de Diabetes
 
-Este projeto tem como objetivo desenvolver um modelo de classificação utilizando a biblioteca Flask para a construção de uma API. O modelo será treinado com um conjunto de dados específico e será capaz de realizar previsões com base em novas entradas.
+Este projeto implementa um modelo de machine learning para prever diabetes em pacientes com base em características médicas. A aplicação é construída com Flask e fornece uma API RESTful para fazer previsões.
 
-## Estrutura do Projeto
+## 📋 Descrição do Projeto
 
-- `app.py`: Arquivo principal que contém a aplicação Flask.
-- `model.py`: Contém a lógica de treinamento e predição do modelo.
-- `data/`: Diretório que contém os dados utilizados para treinamento e teste.
-- `requirements.txt`: Lista de dependências do projeto.
+O sistema utiliza um modelo de classificação treinado no dataset Pima Indians Diabetes para prever se um paciente tem diabetes baseado em características como:
+
+* Sexo
+
 
 ## Como Executar
 
 1. Clone o repositório:
    ```
-   git clone <URL_DO_REPOSITORIO>
+   git clone https://github.com/Prog-LucasAlves/ML_Cla_Flask.git
    cd ML_Cla_Flask
    ```
 
@@ -24,7 +24,7 @@ Este projeto tem como objetivo desenvolver um modelo de classificação utilizan
 
 3. Execute a aplicação Flask:
    ```
-   python app.py
+   streamlit run app.py
    ```
 
 4. Acesse a API em `http://localhost:5000`.
