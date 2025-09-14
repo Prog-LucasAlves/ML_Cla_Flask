@@ -9,7 +9,7 @@ import joblib
 ################################
 # Model Loading
 ################################
-model = joblib.load("/model/diabetes_model.pkl")
+model = joblib.load("model/diabetes_model.pkl")
 
 
 ################################
