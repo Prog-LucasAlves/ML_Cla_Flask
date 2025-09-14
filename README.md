@@ -36,8 +36,10 @@ O sistema utiliza um modelo de classificação treinado no dataset Pima Indians 
 
 4. Acesse a API em `http://localhost:5000`.
 
+## 📝 Licença
+
+Este projeto é para fins educacionais. O dataset é de domínio público.
+
 ## Contribuições
 
 Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou pull requests.
-
-https://www.kaggle.com/code/danishmubashar/diabetes-hypertension-predict-acc-97
