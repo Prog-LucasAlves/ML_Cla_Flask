@@ -10,13 +10,20 @@
 <body>
     <div class="container">
         <h1>Diabetes Classification Model</h1>
-<br> <p align="center", style="font-size:30px;"><b> Diabetes Classification Model </b></p>
 
-<form action="{{ url_for('index') }}" method="POST" style="background-color: rgb(205, 218, 211);">
-    <fieldset>
-        <legend>Enter the Values of the Variables</legend>
-        <br>Gender (0 - Famale | 1 - Male):
-        <input name="Gender" type="number" required>
-        <br>
-    </fieldset>
-</form>
+        <form action="{{ url_for(index') }}" method="POST">
+            <fieldset>
+                <legend>Enter the Values of the Variables</legend>
+
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <select id="gender" name="gender" required>
+                        <option value="">Select...</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                    </select>
+                </div>
+            </fieldset>
+        </form>
+</body>
+</html>
