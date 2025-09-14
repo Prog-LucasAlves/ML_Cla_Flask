@@ -10,8 +10,11 @@
 
 <br> <p align="center", style="font-size:30px;"><b> Diabetes Classification Model </b></p>
 
-<form action="{{ url_for('index') }}" method="POST" style="background-color: antiquewhite;">
+<form action="{{ url_for('index') }}" method="POST" style="background-color: rgb(73, 87, 80);">
     <fieldset>
         <legend>Enter the Values of the Variables</legend>
+        <br>Gender (0 - Famale | 1 - Male):
+        <input name="Gender" type="number" required>
+        <br>
     </fieldset>
 </form>
