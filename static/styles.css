@@ -19,3 +19,23 @@ body {
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 20px;
+}
+
+form {
+    background-color: antiquewhite;
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+fieldset {
+    border: 2px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+}
