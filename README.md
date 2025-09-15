@@ -31,7 +31,7 @@ O sistema utiliza um modelo de classificação treinado no dataset Pima Indians 
 
 3. Execute a aplicação Flask:
    ```
-   streamlit run app.py
+   python app.py
    ```
 
 4. Acesse a API em `http://localhost:5000`.
