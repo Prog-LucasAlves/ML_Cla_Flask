@@ -4,20 +4,18 @@
 import flask
 import pandas as pd
 import joblib
-from sklearn.preprocessing import LabelEncoder
+import numpy as np
 
 
 ################################
 # Model Loading
 ################################
 model = joblib.load("model/diabetes_model.pkl")
-
-
-gender_encoder = LabelEncoder()
-gender_encoder.fit(["Female", "Male"])
-
-smoking_encoder = LabelEncoder()
-smoking_encoder.fit(["never", "current", "former", "not current", "No Info", "ever"])
+scaler = joblib.load("model/scaler.pkl")
+pca = joblib.load("model/pca.pkl")
+gender_encoder = joblib.load("model/gender_encoder.pkl")
+smoking_encoder = joblib.load("model/smoking_encoder.pkl")
+feature_names = joblib.load("model/feature_names.pkl")
 
 
 ################################
@@ -48,6 +46,7 @@ def index():
             gender_encoded = gender_encoder.transform([gender])[0]
             smoking_encoded = smoking_encoder.transform([smoking_history])[0]
 
+            """
             input_data = pd.DataFrame(
                 {
                     "gender": [gender_encoded],
@@ -60,9 +59,30 @@ def index():
                     "blood_glucose_level": [blood_glucose_level],
                 },
             )
+            """
+            input_data = np.array(
+                [
+                    [
+                        gender_encoded,
+                        age,
+                        hypertension,
+                        heart_disease,
+                        smoking_encoded,
+                        bmi,
+                        hba1c_level,
+                        blood_glucose_level,
+                    ],
+                ],
+            )
 
-            prediction = model.predict(input_data)[0]
-            probability = model.predict_proba(input_data)[0][1]
+            input_df = pd.DataFrame(input_data, columns=feature_names)
+
+            input_scaled = scaler.transform(input_df)
+
+            input_pca = pca.transform(input_scaled)
+
+            prediction = model.predict(input_pca)[0]
+            probability = model.predict_proba(input_pca)[0][1]
 
         except Exception as e:
             prediction = "Error"
