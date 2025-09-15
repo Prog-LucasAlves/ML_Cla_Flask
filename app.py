@@ -33,6 +33,7 @@ def index():
             input_data = pd.DataFrame({"gender": [gender]})
 
             prediction = model.predict(input_data)[0]
+            probability = model.predict_proba(input_data)[0][1]
 
         except Exception as e:
             prediction = "Error"
