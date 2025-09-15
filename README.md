@@ -102,7 +102,15 @@ uv venv
 uv add -r requirements.txt
 ```
 
-7. Execute a aplicação
+7. Pre-commit
+
+```bash
+uv add --group dev pre-commit
+pre-commit install
+pre-commit autoupdate
+```
+
+8. Execute a aplicação
 
 ```bash
 python app.py
@@ -113,6 +121,49 @@ python app.py
 ```
 DIR
 |
-|-- data
-      |-- diabetes_prediction_dataset.csv
+|-- data                                   # Pasta de dados
+      |-- diabetes_prediction_dataset.csv  # Dataset
+|-- model                                  # Pasta de Modelos e Artefatos de ML
+      |-- diabetes_model.pkl               # Modelo Treinado (XGBoost)
+      |-- feature_names.pkl                # Nomes das Features Usadas no Modelo
+      |-- gender_encoder.pkl               # Encoder para Variável 'gender'
+      |-- model.ipynb                      # Jupyter Notebook com Análise de Treinamento
+      |-- pca.pkl                          # Objeto PCA para Redução de Dimensionalidade
+      |-- scater.pkl                       # Scaler para Normalização dos Dados
+      |-- smoking_encoder.pkl              # Encoder para Variável 'smoking_history'
+|-- static                                 # Arquivos CSS
+      |-- styles.css                       # Estilos CSS da aplicação
+|-- templates                              # Templates HTML
+      |-- index.html                       # Página Principal da Aplicação
+|-- .gitignore                             # Arquivo para Ignorar Arquivos no Git
+|-- .pre-commit-config.yaml                # Configuração do pre-commit para Qualidade de Código
+|-- .python-version                        # Versão do Python Usada no Projeto
+|-- app.py                                 # Aplicação Flask
+|-- LICENSE                                # Licença do Projeto
+|-- pyproject.toml                         # Configuração do Projeto
+|-- README.md                              # Documentação do Projeto
+|-- requirements.txt                       # Dependências do Projeto
+|
 ```
+
+📊 data/
+
+- **diabetes_prediction_dataset.csv**: Dataset contendo os dados de pacientes com variáveis clínicas usadas para prever diabetes. Inclui features como idade, gênero, IMC, histórico de tabagismo, etc.
+
+🤖 model/
+
+- diabetes_model.pkl: Modelo de machine learning treinado (XGBoost) serializado para fazer previsões.
+- feature_names.pkl: Lista com os nomes das features na ordem correta para alimentar o modelo.
+- gender_encoder.pkl: LabelEncoder para transformar valores categóricos da variável 'gender'.
+- model.ipynb: Notebook Jupyter contendo toda a análise exploratória, pré-processamento, treinamento e avaliação do modelo.
+
+## 📊 Dataset
+
+- Variáveis Utilizadas
+
+O modelo utiliza 8 features para a predição
+
+1. Gênero (gender) - Categórica
+2. Idade (age) - Numérica
+3. Hipertensão (hypertension) - Binária
+4.
