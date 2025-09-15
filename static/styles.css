@@ -129,3 +129,29 @@ button:hover {
         padding: 15px;
     }
 }
+
+.new-prediction-btn {
+    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s;
+    margin-top: 15px;
+    width: 20%;
+}
+
+.new-prediction-btn:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, #45a049 0%, #4CAF50 100%);
+}
+
+/* Melhorias para manter os valores do formulário após envio */
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}

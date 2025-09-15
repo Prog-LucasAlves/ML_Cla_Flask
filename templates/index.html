@@ -87,8 +87,42 @@
             {% else %}
                 <p class="error">Error: {{ probability }}</p>
             {% endif %}
+
+            <button type="button" id="newPredictionBtn" class="new-predicition-btn">Make New Prediction</button>
+
         </div>
         {% endif %}
     </div>
+
+    <script>
+        // Script para limpar o formulário e ocultar resultados ao clicar em "Nova Predição"
+        document.addEventListener('DOMContentLoaded', function() {
+            const newPredictionBtn = document.getElementById('newPredictionBtn');
+            const resultSection = document.getElementById('resultSection');
+
+            if (newPredictionBtn) {
+                newPredictionBtn.addEventListener('click', function() {
+                    // Oculta a seção de resultados
+                    if (resultSection) {
+                        resultSection.style.display = 'none';
+                    }
+
+                    // Rola para o topo do formulário
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+                    // Redireciona para a página inicial sem parâmetros
+                    window.location.href = "{{ url_for('index') }}";
+                });
+            }
+
+            // Se há resultados, rola suavemente para eles
+            if (resultSection) {
+                setTimeout(function() {
+                    resultSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 100);
+            }
+        });
+    </script>
+
 </body>
 </html>
