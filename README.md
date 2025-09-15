@@ -61,4 +61,4 @@ Este projeto é uma aplicação web que utiliza machine learning para prever o r
 - Pré-requisitos
 
 * Python 3.12.4 ou superior
-* ![uv](https://docs.astral.sh/uv/guides/install-python/) ou pip
+* [uv](https://docs.astral.sh/uv/guides/install-python/) ou pip
