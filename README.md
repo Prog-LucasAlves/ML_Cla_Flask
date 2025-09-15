@@ -36,3 +36,29 @@ Este projeto é uma aplicação web que utiliza machine learning para prever o r
 * ✅ Sistema robusto de tratamento de erros
 
 ## 🛠 Tecnologias Utilizadas
+
+- Backend
+
+* Python - Linguagem princiapal
+* Flask - Franework Web
+* XGBoost - Algoritmo de Machine Learning
+* Pandas - Manipulação de Dados
+* Scikit-learn - Pré-processamento e Validação
+* joblib - Serialização do modelo
+
+- Frontend
+
+* HTML5 - Estrutura da página
+* CSS - Estilização
+
+- Ferramentas de Desenvolvimento
+
+* Git - Controle de versão
+* uv - Ambiente Virtual e Gerenciamento de Pacotes Python
+
+## 📥 Instalação e Uso
+
+- Pré-requisitos
+
+* Python 3.12.4 ou superior
+* ![uv](https://docs.astral.sh/uv/guides/install-python/) ou pip
