@@ -16,13 +16,79 @@
                 <legend>Enter the Values of the Variables</legend>
 
                 <div class="form-group">
-                    <label for="gender">Gender</label>
+                    <label for="gender">Gender:</label>
                     <select id="gender" name="gender" required>
                         <option value="0">Female</option>
                         <option value="1">Male</option>
                     </select>
                 </div>
+
+                <div class="form-group">
+                    <label for="age">Age:</label>
+                    <input type="number" id="age" name="age" step="1" min="18" max="100" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="hypertension">Hypertension:</label>
+                    <select id="hypertension" name="hypertension" required>
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="heart_disease">Heart Disease:</label>
+                    <select id="heart_disease" name="heart_disease" required>
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="smoking_history">Smoking History:</label>
+                    <select id="smoking_history" name="smoking_history" required>
+                        <option value="0">No Info</option>
+                        <option value="1">Current</option>
+                        <option value="2">Ever</option>
+                        <option value="3">Former</option>
+                        <option value="4">Never</option>
+                        <option value="5">Not Current</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="bmi">BMI:</label>
+                    <input type="number" id="bmi" name="bmi" step="0.01" min="10" max="100" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="hba1c_level">HbA1c Level:</label>
+                    <input type="number" id="hba1c_level" name="hba1c_level" step="0.1" min="3" max="10" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="blood_glucose_level">Blood Glucose Level:</label>
+                    <input type="number" id="blood_glucose_level" name="blood_glucose_level" step="1" min="80" max="300" required>
+                </div>
+
+                <button type="submit">Predict Diabetes</button>
             </fieldset>
         </form>
+
+        {% if prediction is not none %}
+        <div class="result">
+            <h2>Prediction Result:</h2>
+            {% if prediction == 1 %}
+                <p class="positive">Positive for Diabetes</p>
+                <p>Probability: {{ "%.2f"|format(probability * 100) }}%</p>
+            {% elif prediction == 0 %}
+                <p class="negative">Negative for Diabetes</p>
+                <p>Probability: {{ "%.2f"|format(probability * 100) }}%</p>
+            {% else %}
+                <p class="error">Error: {{ probability }}</p>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
 </body>
 </html>
