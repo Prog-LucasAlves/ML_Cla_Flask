@@ -20,10 +20,25 @@ body {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
+.title-with-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.title-icon {
+    font-size: 2.0rem;
+    color: #4CAF50;
+    animation: pulse 2s infinite;
+}
+
 h1 {
     text-align: center;
     color: #333;
     margin-bottom: 30px;
+    margin: 0;
     font-size: 28px;
 }
 
@@ -136,12 +151,12 @@ button:hover {
     border: none;
     padding: 12px 20px;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 30px;
     font-weight: bold;
     cursor: pointer;
     transition: transform 0.2s;
     margin-top: 15px;
-    width: 20%;
+    width: 200%;
 }
 
 .new-prediction-btn:hover {
