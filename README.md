@@ -37,28 +37,82 @@ Este projeto é uma aplicação web que utiliza machine learning para prever o r
 
 ## 🛠 Tecnologias Utilizadas
 
-- Backend
+* Backend
 
-* Python - Linguagem princiapal
-* Flask - Franework Web
-* XGBoost - Algoritmo de Machine Learning
-* Pandas - Manipulação de Dados
-* Scikit-learn - Pré-processamento e Validação
-* joblib - Serialização do modelo
+1. Python - Linguagem princiapal
+2. Flask - Franework Web
+3. XGBoost - Algoritmo de Machine Learning
+4. Pandas - Manipulação de Dados
+5. Scikit-learn - Pré-processamento e Validação
+6. joblib - Serialização do modelo
 
-- Frontend
+* Frontend
 
-* HTML5 - Estrutura da página
-* CSS - Estilização
+1. HTML5 - Estrutura da página
+2. CSS - Estilização
 
-- Ferramentas de Desenvolvimento
+* Ferramentas de Desenvolvimento
 
-* Git - Controle de versão
-* uv - Ambiente Virtual e Gerenciamento de Pacotes Python
+1. Git - Controle de versão
+2. uv - Ambiente Virtual e Gerenciamento de Pacotes Python
 
 ## 📥 Instalação e Uso
 
 - Pré-requisitos
 
-* Python 3.12.4 ou superior
-* [uv](https://docs.astral.sh/uv/guides/install-python/) ou pip
+1. Python 3.12.4 ou superior
+2. [uv](https://docs.astral.sh/uv/guides/install-python/) ou pip
+
+- Passo a passo para instalação
+
+1. Clone o Repositório
+
+```bash
+git clone https://github.com/Prog-LucasAlves/ML_Cla_Flask.git
+cd diabetes-prediction-flask
+```
+
+2. Inicializando o Projeto
+
+```bash
+uv init
+```
+
+3. Versão do Python
+
+```bash
+uv python install 3.12.4
+```
+
+4. Crie um Ambiente Virtual
+
+```bash
+uv venv
+```
+
+5. Ativando Ambiente Virtual
+
+```bash
+.venv/scripts/activate
+```
+
+6. Instale as dependências
+
+```bash
+uv add -r requirements.txt
+```
+
+7. Execute a aplicação
+
+```bash
+python app.py
+```
+
+## 📁 Estrutura do Projeto
+
+```
+DIR
+|
+|-- data
+      |-- diabetes_prediction_dataset.csv
+```
