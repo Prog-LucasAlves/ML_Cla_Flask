@@ -57,3 +57,75 @@ label {
     font-weight: bold;
     color: #555;
 }
+
+input[type="number"],
+select {
+    width: 26%;
+    padding: 2px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+input[type="number"]:focus,
+select:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+button {
+    width: 26%;
+    padding: 15px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+button:hover {
+    transform: translateY(-2px);
+}
+
+.result {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.positive {
+    color: #dc3545;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.negative {
+    color: #28a745;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.error {
+    color: #ff6b6b;
+    font-weight: bold;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    form {
+        padding: 15px;
+    }
+}
