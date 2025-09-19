@@ -63,22 +63,22 @@ legend {
 }
 
 .form-group {
-    margin-bottom: 8px;
+    margin-bottom: 2px;
 }
 
 label {
     display: block;
-    margin-bottom: 3px;
+    margin-bottom: 2px;
     font-weight: bold;
     color: #555;
 }
 
 input[type="number"],
 select {
-    width: 26%;
+    width: 15%;
     padding: 2px;
     border: 2px solid #ddd;
-    border-radius: 5px;
+    border-radius: 15px;
     font-size: 16px;
     transition: border-color 0.3s;
 }
@@ -89,9 +89,9 @@ select:focus {
     border-color: #667eea;
 }
 
-button {
-    width: 26%;
-    padding: 15px;
+.predicition-btn {
+    width: 15%;
+    padding: 8px 20px;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
     border: none;
@@ -131,6 +131,15 @@ button:hover {
     font-weight: bold;
 }
 
+.disclaimer {
+    background-color: #f8f9fa;
+    border-left: 4px solid #6c757d;
+    padding: 10px;
+    margin-top: 15px;
+    font-size: 12px;
+    color: #6c757d;
+}
+
 @media (max-width: 600px) {
     .container {
         padding: 15px;
@@ -145,18 +154,18 @@ button:hover {
     }
 }
 
-.new-prediction-btn {
-    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+.new-predicition-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
     border: none;
-    padding: 12px 20px;
+    padding: 8px 20px;
     border-radius: 5px;
-    font-size: 30px;
+    font-size: 15px;
     font-weight: bold;
     cursor: pointer;
     transition: transform 0.2s;
     margin-top: 15px;
-    width: 200%;
+    width: 28%;
 }
 
 .new-prediction-btn:hover {
