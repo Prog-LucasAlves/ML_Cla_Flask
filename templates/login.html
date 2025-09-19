@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Diabetes Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-title">
+            <i class="fa fa-lock" style="font-size: 2.5rem; color: #667eea; margin-bottom: 15px;"></i>
+            <h2>Acesso Restrito</h2>
+            <p>Área Adminstrativa - Dados de Predições</p>
+        </div>
+
+        {% if error %}
+        <div class="error-message">
+            <i class="fas fa-exclamation-circle"></i> {{ error }}
+        </div>
+        {% endif %}
+
+        <form class="login-form" method="post">
+            <div class="form-group">
+                <label for="username"><i class="fas fa-user"></i>Usuário:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password"><i class="fas fa-key"></i>Senha:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <button type="submit" class="login-btn">
+                <i class="fas fa-sign-in-alt"></i>Entrar
+            </button>
+        </form>
+
+        <div class="back-link">
+            <a href="{{ url_for('index') }}">
+                <i class="fas fa-arrow-feft"></i>Voltar para a página inicial
+            </a>
+        </div>
+
+    </div>
+</body>
+</html>

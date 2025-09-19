@@ -75,7 +75,7 @@
                     <input type="number" id="blood_glucose_level" name="blood_glucose_level" step="1" min="80" max="300" required>
                 </div>
 
-                <button type="submit">Predict Diabetes</button>
+                <button type="submit" id="predictionBtn" class="predicition-btn">Predict</button>
             </fieldset>
         </form>
 
@@ -83,14 +83,20 @@
         <div class="result">
             <h2>Prediction Result:</h2>
             {% if prediction == 1 %}
-                <p class="positive">Positive for Diabetes</p>
+                <p class="positive">🟢 High Risk of Diabetes Detected</p>
                 <p>Probability: {{ "%.2f"|format(probability * 100) }}%</p>
             {% elif prediction == 0 %}
-                <p class="negative">Negative for Diabetes</p>
+                <p class="negative">🔴 Low Risk of Diabetes</p>
                 <p>Probability: {{ "%.2f"|format(probability * 100) }}%</p>
             {% else %}
                 <p class="error">Error: {{ probability }}</p>
             {% endif %}
+
+            <div class="disclaimer">
+                <p><strong>Disclaimer:</strong>This prediction is based on machine learning algorithms and
+                should not be used as a substitute for professional medical diagnosis.
+                Always consult with healthcare professionals for medical advice.</p>
+            </div>
 
             <button type="button" id="newPredictionBtn" class="new-predicition-btn">Make New Prediction</button>
 
