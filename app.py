@@ -361,15 +361,18 @@ def dash():
         cursor.execute("""
             SELECT
                 CASE
-                    WHEN age < 30 THEN 'Menos 30'
-                    WHEN age BETWEEN 30 AND 45 THEN '30-45'
-                    WHEN age BETWEEN 46 AND 60 THEN '46-60'
-                    ELSE 'Mais 60'
+                    WHEN age BETWEEN 18 AND 25 THEN '18-25'
+                    WHEN age BETWEEN 26 AND 35 THEN '26-35'
+                    WHEN age BETWEEN 36 AND 45 THEN '36-45'
+                    WHEN age BETWEEN 46 AND 55 THEN '46-55'
+                    WHEN age BETWEEN 56 AND 65 THEN '56-65'
+                    ELSE 'Mais 65'
                 END as age_group,
                 COUNT(*) as count,
                 ROUND(COUNT(*) * 100.0 / (SELECT COUNT(*) FROM predictions), 2) as percentage
             FROM predictions
             GROUP BY age_group
+            ORDER BY count DESC
         """)
         age_distribution = cursor.fetchall()
 
