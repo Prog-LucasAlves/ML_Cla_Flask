@@ -10,8 +10,8 @@ Um sistema de machine learning(Modelo de Classificação) para predição de dia
 ## 📋 Índice
 
 - [Visão Geral](#-visão-geral)
-* Funcionalidades
-* Tecnologias Utilizadas
+- [Funcionalidades](#-funcionalidades)
+- [Tecnologias Utilizadas](#-tecnologias-utilizadas)
 * Instalação e Uso
 * Estrutura do Projeto
 * Dataset
@@ -37,7 +37,7 @@ Este projeto é uma aplicação web que utiliza machine learning para prever o r
 
 ## 🛠 Tecnologias Utilizadas
 
-* Backend
+### Backend
 
 1. Python - Linguagem princiapal
 2. Flask - Franework Web
@@ -46,12 +46,12 @@ Este projeto é uma aplicação web que utiliza machine learning para prever o r
 5. Scikit-learn - Pré-processamento e Validação
 6. joblib - Serialização do modelo
 
-* Frontend
+### Frontend
 
 1. HTML5 - Estrutura da página
 2. CSS - Estilização
 
-* Ferramentas de Desenvolvimento
+### Ferramentas de Desenvolvimento
 
 1. Git - Controle de versão
 2. uv - Ambiente Virtual e Gerenciamento de Pacotes Python
@@ -187,7 +187,7 @@ DIR
 
 ## 📊 Dataset
 
-- **Variáveis Utilizadas**
+### **Variáveis Utilizadas**
 - O modelo utiliza 8 features para a **predição**:
 
 1. Gênero (gender) - Categórica
@@ -199,11 +199,11 @@ DIR
 7. Nível de HbA1c(Hemoglobina Glicada) (HbA1c_level) - Numérica
 8. Nível de Glicose (blood_glucose_level) - Numérica
 
-- **Variável Alvo**
+### **Variável Alvo**
 
 1. Diabetes (diabetes) - Binária (0 = Não, 1 = Sim)
 
-- **Exemplo de Dados**
+### **Exemplo de Dados**
 
 ```python
 {
@@ -228,7 +228,7 @@ DIR
 
 - Processa os dados do formulário e retorna a predição.
 
-- **Exemplo de Request**
+#### **Exemplo de Request**
 
 ```json
 {
@@ -243,7 +243,7 @@ DIR
 }
 ```
 
-- **Exemplo de Response**
+#### **Exemplo de Response**
 
 ```json
 {
@@ -255,4 +255,9 @@ DIR
 
 ## 🤝 Contribuição
 
------ ⭐ Se este projeto foi útil, deixe uma estrela no GitHub! -----
+- Contribuições são ben-vindas!
+
+## 📝 Licença
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](https://github.com/Prog-LucasAlves/ML_Cla_Flask/blob/main/LICENSE) para detalhes.
+
+- ⭐ Se este projeto foi útil, deixe uma estrela no GitHub! -
