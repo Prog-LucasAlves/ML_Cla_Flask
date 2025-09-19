@@ -7,7 +7,9 @@ requires-python = ">=3.12"
 dependencies = [
     "flask>=3.1.2",
     "gunicorn>=23.0.0",
+    "nbformat>=5.10.4",
     "pandas>=2.3.2",
+    "plotly>=6.3.0",
     "psycopg2>=2.9.10",
     "python-dotenv>=1.1.1",
     "scikit-learn>=1.7.2",
