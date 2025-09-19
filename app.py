@@ -36,25 +36,72 @@ feature_names = joblib.load("model/feature_names.pkl")
 # Database Setup
 ################################
 def get_db_connection():
+    """
+    Creates and returns a connection to the PostgreSQL database.
+
+    This function loads environment variables and establishes a database
+    connection using psycopg2. The connection parameters are retrieved
+    from environment variables for security.
+
+    Environment Variables Used:
+        - DB_HOST: Database host name or IP address
+        - DB_PORT: Database port number (default PostgreSQL port is 5432)
+        - DB_NAME: Name of the database to connect to
+        - DB_USER: Database username for authentication
+        - DB_PASSWORD: Database password for authentication
+
+    Returns:
+        psycopg2.extensions.connection: A PostgreSQL database connection object
+
+    """
+
     dotenv.load_dotenv()
-    db_host = os.getenv("DB_HOST")
-    db_port = os.getenv("DB_PORT")
-    db_name = os.getenv("DB_NAME")
-    db_user = os.getenv("DB_USER")
-    db_password = os.getenv("DB_PASSWORD")
+    DB_HOST = os.getenv("DB_HOST")
+    DB_PORT = os.getenv("DB_PORT")
+    DB_NAME = os.getenv("DB_NAME")
+    DB_USER = os.getenv("DB_USER")
+    DB_PASSWORD = os.getenv("DB_PASSWORD")
 
     conn = psycopg2.connect(
-        host=db_host,
-        port=db_port,
-        dbname=db_name,
-        user=db_user,
-        password=db_password,
+        host=DB_HOST,
+        port=DB_PORT,
+        dbname=DB_NAME,
+        user=DB_USER,
+        password=DB_PASSWORD,
     )
 
     return conn
 
 
 def init_db():
+    """
+    Initializes the database by creating the predictions table if it doesn't exist.
+
+    This function establishes a database connection, creates a table for storing
+    diabetes prediction results with appropriate schema, and ensures the changes
+    are committed to the database.
+
+    Table Schema:
+        - id: Primary key (auto-incrementing integer)
+        - date: Timestamp of when the prediction was stored (defaults to current time)
+        - gender: Text field for gender information
+        - age: Integer field for age
+        - hypertension: Integer flag for hypertension (0 or 1)
+        - heart_disease: Integer flag for heart disease (0 or 1)
+        - smoking_history: Text field for smoking history
+        - bmi: Floating point number for Body Mass Index
+        - hba1c_level: Floating point number for HbA1c level
+        - blood_glucose_level: Floating point number for blood glucose level
+        - prediction: Integer field for the prediction result (0 or 1)
+        - probability: Floating point number for prediction probability confidence
+
+    Operations:
+        - Creates table 'predictions' with specified schema if it doesn't exist
+        - Uses IF NOT EXISTS to avoid errors if table already exists
+        - Sets default timestamp for the date column
+        - Commits changes and closes the database connection
+    """
+
     conn = get_db_connection()
     cursor = conn.cursor()
 
@@ -82,6 +129,33 @@ def init_db():
 
 
 def save_preddiction(form_data, prediction, probability):
+    """
+    Saves a diabetes prediction result to the database.
+
+    This function takes form data and prediction results, converts them to
+    appropriate data types, and inserts them into the predictions table.
+
+    Parameters:
+        form_data (dict): A dictionary containing form input data with keys:
+            - gender (str): Gender information
+            - age (str): Age as string (converted to int)
+            - hypertension (str): Hypertension flag as string (converted to int)
+            - heart_disease (str): Heart disease flag as string (converted to int)
+            - smoking_history (str): Smoking history information
+            - bmi (str): Body Mass Index as string (converted to float)
+            - hba1c_level (str): HbA1c level as string (converted to float)
+            - blood_glucose_level (str): Blood glucose level as string (converted to float)
+
+        prediction (int or compatible): The prediction result (0 or 1)
+        probability (float or compatible): The prediction probability confidence
+
+    Operations:
+        - Establishes database connection
+        - Inserts a new record into the predictions table
+        - Converts form string data to appropriate data types
+        - Rounds probability to 2 decimal places for storage
+        - Commits the transaction and closes the connection
+    """
     conn = get_db_connection()
     cursor = conn.cursor()
 
@@ -177,6 +251,57 @@ def index():
     return flask.render_template("index.html", prediction=prediction, probability=probability)
 
 
+@app.route("/predict", methods=["POST"])
+def predict():
+    try:
+        data = flask.request.json
+
+        gender = data["gender"]
+        age = float(data["age"])
+        hypertension = int(data["hypertension"])
+        heart_disease = int(data["heart_disease"])
+        smoking_history = data["smoking_history"]
+        bmi = float(data["bmi"])
+        hba1c_level = float(data["hba1c_level"])
+        blood_glucose_level = float(data["blood_glucose_level"])
+
+        gender_encoded = gender_encoder.transform([gender])[0]
+        smoking_encoded = smoking_encoder.transform([smoking_history])[0]
+
+        input_data = np.array(
+            [
+                [
+                    gender_encoded,
+                    age,
+                    hypertension,
+                    heart_disease,
+                    smoking_encoded,
+                    bmi,
+                    hba1c_level,
+                    blood_glucose_level,
+                ],
+            ],
+        )
+
+        input_df = pd.DataFrame(input_data, columns=feature_names)
+
+        input_scaled = scaler.transform(input_df)
+
+        input_pca = pca.transform(input_scaled)
+
+        prediction = model.predict(input_pca)[0]
+        probability = model.predict_proba(input_pca)[0][1]
+
+        save_preddiction(data, prediction, probability)
+
+        return flask.jsonify(
+            {"prediction": int(prediction), "probability": float(probability), "status": "success"},
+        )
+
+    except Exception as e:
+        return flask.jsonify({"error": str(e)}), 500
+
+
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if flask.request.method == "POST":
@@ -190,6 +315,12 @@ def login():
             flask.flash("Invalid credentials. Please try again..")
 
     return flask.render_template("login.html")
+
+
+@app.route("/logout")
+def logout():
+    flask.session.pop("logged_in", None)
+    return flask.redirect(flask.url_for("index"))
 
 
 @app.route("/data")
