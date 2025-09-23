@@ -216,7 +216,7 @@
             new Chart(predictionCtx, {
                 type: 'doughnut',
                 data: {
-                    labels: ['Negativo', 'Positivo'],
+                    labels: ['Positivo', 'Negativo',],
                     datasets: [{
                         data: [{{ stats[0][2] }}, {{ stats[0][1] }}],
                         backgroundColor: ['#28a745', '#dc3545']
@@ -245,7 +245,7 @@
                     datasets: [{
                         data: [{% for gender, count, percentage in gender_distribution %}
                         {{ count }}, {% endfor %}],
-                        backgroundColor: ['#667eea', '#f093fb', '#f5576c', '#4facfe']
+                        backgroundColor: ['#f093fb', '#667eea']
                     }]
                 },
                 options: {
