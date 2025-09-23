@@ -82,8 +82,8 @@ font-size: 0.95rem;
 font-weight: 500;
 }
 
-.stat-positive { color: #dc3545; }
-.stat-negative { color: #28a745; }
+.stat-positive { color: #28a745; }
+.stat-negative { color: #dc3545; }
 
 .grid-2 {
 display: grid;
