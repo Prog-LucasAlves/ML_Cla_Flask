@@ -127,6 +127,7 @@ DIR
       |-- diabetes_model.pkl               # Modelo Treinado (XGBoost)
       |-- feature_names.pkl                # Nomes das Features Usadas no Modelo
       |-- gender_encoder.pkl               # Encoder para Variável 'gender'
+      |-- patient.ipynb                    # Jupyter Notebook com dados **FAKE** para serem preditos
       |-- model.ipynb                      # Jupyter Notebook com Análise de Treinamento
       |-- pca.pkl                          # Objeto PCA para Redução de Dimensionalidade
       |-- scater.pkl                       # Scaler para Normalização dos Dados
